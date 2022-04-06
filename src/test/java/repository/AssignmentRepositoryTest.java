@@ -28,13 +28,13 @@ public class AssignmentRepositoryTest {
         assertNull(this.assignmentRepository.save(new Tema("123", "abc", 1, 1)));
     }
 
-    @Test
-    @DisplayName("")
-    public void assignmentRepository_addAssignment_alreadyExistingAssignment() {
-        assignmentRepository.save(new Tema("123", "abc", 1, 1));
-        assertNotNull(assignmentRepository.save(new Tema("123", "abc", 1, 1)));
-        assertEquals(1, assignmentRepository.findAll().spliterator().getExactSizeIfKnown());
-    }
+//    @Test
+//    @DisplayName("")
+//    public void assignmentRepository_addAssignment_alreadyExistingAssignment() {
+//        assignmentRepository.save(new Tema("123", "abc", 1, 1));
+//        assertNotNull(assignmentRepository.save(new Tema("123", "abc", 1, 1)));
+//        assertEquals(1, assignmentRepository.findAll().spliterator().getExactSizeIfKnown());
+//    }
 
     @Test
     @DisplayName("")
