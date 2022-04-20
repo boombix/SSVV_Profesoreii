@@ -67,4 +67,42 @@ public class IntegrationTest {
         assignmentRepository_addAssignment_validNonExistingAssignment();
         gradeRepository_addGrade_validNonExistingGrade();
     }
+
+    @Test
+    @DisplayName("Adding a valid student")
+    void topDownIntegration_addStudent_validFields_validNonExistingStudent() {
+        this.studentRepository.save(new Student("1000", "student1", 931));
+        Student student = this.studentRepository.findOne("1000");
+        assertEquals(student.getNume(), "student1");
+
+    }
+
+    @Test
+    @DisplayName("Adding a valid student")
+    void topDownIntegration_addStudent_addAssignment_validFields() {
+        this.studentRepository.save(new Student("1000", "student1", 931));
+        Student student = this.studentRepository.findOne("1000");
+        assertEquals(student.getNume(), "student1");
+
+        this.assignmentRepository.save(new Tema("1000", "assignment1", 1, 1));
+        Tema assignment = this.assignmentRepository.findOne("1000");
+        assertEquals(assignment.getDescriere(), "assignment1");
+    }
+
+    @Test
+    @DisplayName("Adding a valid student")
+    void topDownIntegration_addStudent_addAssignment_addGrade_validFields() {
+        this.studentRepository.save(new Student("1000", "student1", 931));
+        Student student = this.studentRepository.findOne("1000");
+        assertEquals(student.getNume(), "student1");
+
+        this.assignmentRepository.save(new Tema("1000", "assignment1", 1, 1));
+        Tema assignment = this.assignmentRepository.findOne("1000");
+        assertEquals(assignment.getDescriere(), "assignment1");
+
+        this.gradeRepository.save(new Nota(new Pair("1000", "1000"), 10.00, 1, "10"));
+        Nota grade = this.gradeRepository.findOne(new Pair("1000", "1000"));
+        assertEquals(grade.getFeedback(), "10");
+    }
+
 }
